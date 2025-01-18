@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Include FontAwesome for the user icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="ml-auto">
+            <% if (user) { %>
+                <!-- User is logged in -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> Profile
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#" id="viewProfile">View Profile</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </div>
+            <% } else { %>
+                <!-- User is not logged in -->
+                <a class="btn btn-outline-light" href="/register">Register</a>
+                <a class="btn btn-outline-light" href="/login">Login</a>
+                <a class="btn btn-outline-light" href="/login/seller">Login as Seller</a>
+            <% } %>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1>Welcome to Our Website</h1>
+        <p>This is the home page.</p>
+
+        <% if (user) { %>
+            <!-- Button to trigger profile modal -->
+            
+        <% } else { %>
+            <p>You are not logged in. Please <a href="/login">login</a> to view your profile.</p>
+        <% } %>
+    </div>
+
+    <!-- Profile Modal (hidden initially) -->
+    <% if (user) { %>
+        <div class="modal" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Full Name:</strong> <%= user.fullname %></p>
+                        
+                        <p><strong>Phone:</strong> <%= user.phone %></p>
+                        <p><strong>Address</strong> <%= user.address %></p>
+                        <p><strong>User ID:</strong> <%= user.userId %></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Profile Modal Trigger Script -->
+    <% if (user) { %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Show the profile modal when the 'View Profile' button is clicked
+                document.getElementById('viewProfile').addEventListener('click', function() {
+                    $('#profileModal').modal('show');  // Show the profile modal using Bootstrap's modal method
+                });
+            });
+        </script>
+    <% } %>
+</body>
+</html>

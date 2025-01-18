@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#viewProfile">View Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div id="viewProfile" class="card">
+            <div class="card-header bg-primary text-white">
+                <h4>Seller Profile</h4>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img 
+                        src="/uploads/<%= profilePicture %>" 
+                        alt="Profile Picture" 
+                        class="rounded-circle" 
+                        style="width: 150px; height: 150px; object-fit: cover;">
+                </div>
+                <div class="mb-3">
+                    <strong>Shop Name:</strong> <%= shopName %>
+                </div>
+                <div class="mb-3">
+                    <strong>Owner Name:</strong> <%= ownerName %>
+                </div>
+                <div class="mb-3">
+                    <strong>Location:</strong> <%= location %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

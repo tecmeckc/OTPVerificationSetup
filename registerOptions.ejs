@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register As</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <p><%= message %></p>
+        <h3>User authentication successful!</h3>
+      
+        <div class="container">
+            <h1>Register As</h1>
+             <!-- Display any messages passed from the server -->
+            <form action="/register/customer" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-primary">Customer</button>
+            </form>
+            <form action="/register/seller" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-secondary">Seller</button>
+            </form>
+        </div>
+       
+    </div>
+</body>
+</html>
